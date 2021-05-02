@@ -99,4 +99,65 @@ function makeBooleanCard(data, set, name) {
     return out;
 }
 
+function spell(word, scheme) {
+    let words = []
+
+    switch (scheme) {
+        case 'de':
+            words = [
+                'Anton', 'Berta', 'Cäsar', 'Dora', 'Emil', 'Friedrich', 'Gustav', 'Heinrich', 'Ida', 'Julius',
+                'Kaufmann', 'Ludwig', 'Martha', 'Nordpol', 'Otto', 'Paula', 'Quelle', 'Richard', 'Samuel', 'Theodor',
+                'Ulrich', 'Viktor', 'Wilhelm', 'Xanthippe', 'Ypsilon', 'Zacharias'
+            ];
+            break;
+        case 'en':
+            words =  [
+                'Alfa', 'Bravo', 'Charlie', 'Delta', 'Echo', 'Foxtrott', 'Golf', 'Hotel', 'India', 'Juliett', 'Kilo',
+                'Lima', 'Mike', 'November', 'Oscar', 'Papa', 'Québec', 'Romeo', 'Sierra', 'Tango', 'Uniform', 'Victor',
+                'Whiskey', 'X-Ray', 'Yankee', 'Zulu'
+            ];
+            break;
+    }
+
+    let chars = 'abcdefghijklmnopqrstuvwxyz';
+
+    let out = [];
+    word = word.toLowerCase();
+    for (let i = 0; i < word.length; i++) {
+        switch (word[i]) {
+            case 'ß':
+                out.push('Eszett');
+                break;
+            case 'ö':
+                out.push('Ökonom');
+                break;
+            case 'ü':
+                out.push('Übermut');
+                break;
+            case 'ä':
+                out.push('Ärger');
+                break;
+            default:
+                if (chars.includes(word[i])) {
+                    out.push(words[chars.indexOf(word[i])]);
+                } else {
+                    out.push(word[i]);
+                }
+                break;
+        }
+    }
+
+    return out.join(' / ');
+}
+
+$(function() {
+    $('[name=spellingScheme]').change(function() {
+        $('#spellingResult').html(spell($('#spellingWord').val(), $('[name=spellingScheme]:checked').val()));
+    });
+
+    $('#spellingWord').keyup(function() {
+       $('#spellingResult').html(spell($('#spellingWord').val(), $('[name=spellingScheme]:checked').val()));
+    });
+});
+
 chrome.devtools.network.onRequestFinished.addListener(handleRequestFinished);
