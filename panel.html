@@ -41,6 +41,20 @@
                         </div>
                     </div>
                 </div>
+                <div class="card invisible">
+                    <div class="card-header" id="izsearchHeader">
+                        <button class="btn" data-toggle="collapse" data-target="#izsearchBody" aria-expanded="false" aria-controls="sizsearchBody">Impfzentrum suchen</button>
+                    </div>
+                    <div id="izsearchBody" class="collapse" aria-labelledby="izsearchHeader" data-parent="#toolsAccordion">
+                        <div class="card-body">
+                            <form>
+                                <label for="izsearchZIP" class="form-label">PLZ</label>
+                                <input type="number" min="10000" max="99999" step="1" class="form-control" id="izsearchZIP">
+                                <div id="izsearchResult"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="clearfix">&nbsp;</div>
             <div id="content">&nbsp;</div>

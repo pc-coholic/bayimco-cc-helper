@@ -158,6 +158,15 @@ $(function() {
     $('#spellingWord').keyup(function() {
        $('#spellingResult').html(spell($('#spellingWord').val(), $('[name=spellingScheme]:checked').val()));
     });
+
+    $('#izsearchZIP').keyup(function() {
+        if ($(this).val().length !== 5) {
+            $('izsearchResult').empty();
+        } else {
+            // ToDo: CORS issue...
+            $.getJSON('https://impfzentren.bayern/api/v1/centers/byZip?zip=' + $(this).val(), function (data ) {});
+        }
+    });
 });
 
 chrome.devtools.network.onRequestFinished.addListener(handleRequestFinished);
