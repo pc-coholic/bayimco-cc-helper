@@ -29,14 +29,13 @@ function processPersonData(content) {
     if ("uuid" in data) {
         $('#nodata').hide();
         $('#content').empty();
-        $('#content').append('<div id="accordion">');
-        $('#content').append(makeMetadataCard(data));
-        $('#content').append(makeBooleanCard(data, 'workMedInstitution', 'Medizinische Einrichtungen'));
-        $('#content').append(makeBooleanCard(data, 'workEducation', 'Kinder-/Jugendbetreuung, Schule/Hochschule'));
-        $('#content').append(makeBooleanCard(data, 'workLiveCommunity', 'Erhaltung öffentliches Leben'));
-        $('#content').append(makeBooleanCard(data, 'workInstitutionPublicLiving', 'Gemeinschaftseinrichtung'));
-        $('#content').append(makeBooleanCard(data, 'workHighSocialContact', 'Besondere Kontaktsituation'));
-        $('#content').append('</div>');
+        $('#content').append('<div id="accordion"></div>');
+        $('#accordion').append(makeMetadataCard(data));
+        $('#accordion').append(makeBooleanCard(data, 'workMedInstitution', 'Medizinische Einrichtungen'));
+        $('#accordion').append(makeBooleanCard(data, 'workEducation', 'Kinder-/Jugendbetreuung, Schule/Hochschule'));
+        $('#accordion').append(makeBooleanCard(data, 'workLiveCommunity', 'Erhaltung öffentliches Leben'));
+        $('#accordion').append(makeBooleanCard(data, 'workInstitutionPublicLiving', 'Gemeinschaftseinrichtung'));
+        $('#accordion').append(makeBooleanCard(data, 'workHighSocialContact', 'Besondere Kontaktsituation'));
     } else {
         cleanup();
     }
@@ -60,7 +59,7 @@ function makeMetadataCard(data) {
     out += '<div class="card-header" id="metadataHeader">';
     out += '<button class="btn" data-toggle="collapse" data-target="#metadataBody" aria-expanded="true" aria-controls="metadataBody">Metadaten</button>';
     out += '</div>';
-    out += '<div id="metadataBody" class="collapse show" aria-labelledby="metadataBodyHeader" data-parent="#accordion">';
+    out += '<div id="metadataBody" class="collapse show" aria-labelledby="metadataHeader" data-parent="#accordion">';
     out += '<div class="card-body"><table>';
 
     let keys = ['birthday', 'age', 'score', 'registeredAt', 'deactivated', 'preexistingConditionsNumber', 'invited', 'invitationDate', 'contactedByCallCenter'];
@@ -86,9 +85,9 @@ function makeMetadataCard(data) {
 function makeBooleanCard(data, set, name) {
     var out = '<div class="card">';
     out += '<div class="card-header" id="' + set + 'Header">';
-    out += '<button class="btn collapsed" data-toggle="collapse" data-target="#' +  set + 'Body" aria-expanded="true" aria-controls="' +  set + 'Body">' + name + '</button>';
+    out += '<button class="btn collapsed" data-toggle="collapse" data-target="#' +  set + 'Body" aria-expanded="false" aria-controls="' +  set + 'Body">' + name + '</button>';
     out += '</div>';
-    out += '<div id="' +  set + 'Body" class="collapse" aria-labelledby="' +  set + 'BodyHeader" data-parent="#accordion">';
+    out += '<div id="' +  set + 'Body" class="collapse" aria-labelledby="' +  set + 'Header" data-parent="#accordion">';
     out += '<div class="card-body"><table>';
     
     for (const [key, value] of Object.entries(data[set])) {
