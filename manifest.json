@@ -5,11 +5,14 @@
     "description": "Hilfstool für BayIMCO CallCenter",
     "devtools_page": "devtools.html",
     "permissions": [
-        "webRequest",
         "tabs",
-        "https://intern.impfzentren.bayern/api/v1/call-center/citizens/*"
+        "https://impfzentren.bayern/*",
+        "https://intern.impfzentren.bayern/*",
+        "https://uat.impfzentren.bayern/*",
+        "https://uat-intern.impfzentren.bayern/*"
     ],
     "icons": {
+        "128": "android-chrome-128x128.png",
         "192": "android-chrome-192x192.png"
     }
 }
