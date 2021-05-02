@@ -58,7 +58,7 @@ function makeMetadataCard(data) {
     out += '<div id="metadataBody" class="collapse show" aria-labelledby="metadataBodyHeader" data-parent="#accordion">';
     out += '<div class="card-body"><table>';
 
-    let keys = ['uuid', 'score', 'registeredAt', 'deactivated', 'preexistingConditionsNumber', 'invited', 'invitationDate', 'contactedByCallCenter'];
+    let keys = ['score', 'registeredAt', 'deactivated', 'preexistingConditionsNumber', 'invited', 'invitationDate', 'contactedByCallCenter'];
     
     keys.forEach(element => {
         out += "<tr><td>" + element + ":</td><td>" + getBooleanEmojiOrString(data[element]) + "</td></tr>";
