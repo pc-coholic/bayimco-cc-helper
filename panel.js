@@ -2,6 +2,11 @@ function handleRequestFinished(request) {
     request.getContent((body) => {
         if (request.request && request.request.url) {
             chrome.tabs.query({active: true, lastFocusedWindow: true}, tabs => {
+                // The main browser tab might not be focussed right now (user clicked inside the Devtools last, for example),
+                // so we are not acting on it.
+                if (tabs.length === 0) {
+                    return;
+                }
                 let taburl = tabs[0].url;
                 // https://impfzentren.bayern/citizen/overview/AD99E6C9-7169-44DB-820C-E4F36D0A6F9E
                 // https://intern.impfzentren.bayern/callcenter/citizen/overview/AD99E6C9-7169-44DB-820C-E4F36D0A6F9E
