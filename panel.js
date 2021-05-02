@@ -58,10 +58,19 @@ function makeMetadataCard(data) {
     out += '<div id="metadataBody" class="collapse show" aria-labelledby="metadataBodyHeader" data-parent="#accordion">';
     out += '<div class="card-body"><table>';
 
-    let keys = ['score', 'registeredAt', 'deactivated', 'preexistingConditionsNumber', 'invited', 'invitationDate', 'contactedByCallCenter'];
-    
-    keys.forEach(element => {
-        out += "<tr><td>" + element + ":</td><td>" + getBooleanEmojiOrString(data[element]) + "</td></tr>";
+    let keys = ['birthday', 'age', 'score', 'registeredAt', 'deactivated', 'preexistingConditionsNumber', 'invited', 'invitationDate', 'contactedByCallCenter'];
+    let datetimekeys = ['registeredAt', 'invitationDate'];
+
+    keys.forEach(key => {
+        if (key === "birthday") {
+            data['age'] = Math.abs(new Date(Date.now() - new Date(data[key]).getTime()).getUTCFullYear() - 1970)
+        }
+
+        if (datetimekeys.includes(key)) {
+            data[key] = new Date(data[key]).toLocaleString('de');
+        }
+
+        out += "<tr><td>" + key + "</td><td>" + getBooleanEmojiOrString(data[key]) + "</td></tr>";
     });
     
     out += '</table></div></div>';
