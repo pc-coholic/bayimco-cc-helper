@@ -53,7 +53,7 @@ function getBooleanEmoji(value) {
 function makeMetadataCard(data) {
     var out = '<div class="card">';
     out += '<div class="card-header" id="metadataHeader">';
-    out += '<button class="btn btn-link" data-toggle="collapse" data-target="#metadataBody" aria-expanded="true" aria-controls="metadataBody">Metadaten</button>';
+    out += '<button class="btn" data-toggle="collapse" data-target="#metadataBody" aria-expanded="true" aria-controls="metadataBody">Metadaten</button>';
     out += '</div>';
     out += '<div id="metadataBody" class="collapse show" aria-labelledby="metadataBodyHeader" data-parent="#accordion">';
     out += '<div class="card-body"><table>';
@@ -72,7 +72,7 @@ function makeMetadataCard(data) {
 function makeBooleanCard(data, set, name) {
     var out = '<div class="card">';
     out += '<div class="card-header" id="' + set + 'Header">';
-    out += '<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#' +  set + 'Body" aria-expanded="true" aria-controls="' +  set + 'Body">' + name + '</button>';
+    out += '<button class="btn collapsed" data-toggle="collapse" data-target="#' +  set + 'Body" aria-expanded="true" aria-controls="' +  set + 'Body">' + name + '</button>';
     out += '</div>';
     out += '<div id="' +  set + 'Body" class="collapse" aria-labelledby="' +  set + 'BodyHeader" data-parent="#accordion">';
     out += '<div class="card-body"><table>';
@@ -85,7 +85,5 @@ function makeBooleanCard(data, set, name) {
     
     return out;
 }
-
-
 
 chrome.devtools.network.onRequestFinished.addListener(handleRequestFinished);
