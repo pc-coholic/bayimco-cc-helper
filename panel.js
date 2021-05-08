@@ -10,7 +10,8 @@ function handleRequestFinished(request) {
                 let taburl = tabs[0].url;
                 // https://impfzentren.bayern/citizen/overview/AD99E6C9-7169-44DB-820C-E4F36D0A6F9E
                 // https://intern.impfzentren.bayern/callcenter/citizen/overview/AD99E6C9-7169-44DB-820C-E4F36D0A6F9E
-                if (!/^https:\/\/(intern.|uat.|intern-uat.)?impfzentren.bayern\/(callcenter\/)?citizen\/overview\/[0-9A-F]{8}-[0-9A-F]{4}-4[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/.test(taburl)) {
+                // https://intern.impfzentren.bayern/management/citizen-overview/AD99E6C9-7169-44DB-820C-E4F36D0A6F9E
+                if (!/^https:\/\/(intern.|uat.|intern-uat.)?impfzentren.bayern\/(callcenter\/|management\/)?(citizen\/overview\/|citizen-overview\/)[0-9A-F]{8}-[0-9A-F]{4}-4[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/.test(taburl)) {
                     cleanup();
                 } else {
                     // https://impfzentren.bayern/api/v1/citizens/AD99E6C9-7169-44DB-820C-E4F36D0A6F9E
