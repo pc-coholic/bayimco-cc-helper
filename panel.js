@@ -89,17 +89,30 @@ function makeMetadataCard(data) {
 }
 
 function makeBooleanCard(data, set, name) {
-    var out = '<div class="card">';
+    let out = '';
+    let items = '';
+    let count = 0;
+
+    for (const [key, value] of Object.entries(data[set])) {
+        items += "<tr><td>" + key + "</td><td>" + getBooleanEmoji(value) + "</td></tr>"
+        if (value) {
+            count++;
+        }
+    }
+
+    out += '<div class="card">';
     out += '<div class="card-header" id="' + set + 'Header">';
-    out += '<button class="btn collapsed" data-toggle="collapse" data-target="#' +  set + 'Body" aria-expanded="false" aria-controls="' +  set + 'Body">' + name + '</button>';
+    out += '<button class="btn collapsed" data-toggle="collapse" data-target="#' +  set + 'Body" aria-expanded="false" aria-controls="' +  set + 'Body">';
+    if (count > 0) {
+        out += name + ' <span class="badge bg-secondary">' + count + '</span>';
+    } else {
+        out += name;
+    }
+    out += '</button>';
     out += '</div>';
     out += '<div id="' +  set + 'Body" class="collapse" aria-labelledby="' +  set + 'Header" data-parent="#accordion">';
     out += '<div class="card-body"><table>';
-    
-    for (const [key, value] of Object.entries(data[set])) {
-        out += "<tr><td>" + key + "</td><td>" + getBooleanEmoji(value) + "</td></tr>"
-    }
-    
+    out += items
     out += '</table></div></div></div>';
     
     return out;
