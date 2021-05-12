@@ -65,6 +65,7 @@ function makeMetadataCard(data) {
 
     let keys = ['birthday', 'age', 'score', 'registeredAt', 'deactivated', 'preexistingConditionsNumber', 'invited', 'invitationDate', 'contactedByCallCenter'];
     let datetimekeys = ['registeredAt', 'invitationDate'];
+    let datekeys = ['birthday'];
 
     keys.forEach(key => {
         if (key === "birthday") {
@@ -73,6 +74,10 @@ function makeMetadataCard(data) {
 
         if (datetimekeys.includes(key)) {
             data[key] = new Date(data[key]).toLocaleString('de');
+        }
+
+        if (datekeys.includes(key)) {
+            data[key] = new Date(data[key]).toLocaleDateString('de');
         }
 
         out += "<tr><td>" + key + "</td><td>" + getBooleanEmojiOrString(data[key]) + "</td></tr>";
