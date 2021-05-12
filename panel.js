@@ -56,7 +56,7 @@ function getBooleanEmoji(value) {
 }
 
 function makeMetadataCard(data) {
-    var out = '<div class="card">';
+    let out = '<div class="card">';
     out += '<div class="card-header" id="metadataHeader">';
     out += '<button class="btn" data-toggle="collapse" data-target="#metadataBody" aria-expanded="true" aria-controls="metadataBody">Metadaten</button>';
     out += '</div>';
