@@ -1,8 +1,8 @@
 {
-    "name": "BayIMCO CC-Helper",
-    "version": "0.0.3",
+    "name": "BayIMCO Helper",
+    "version": "0.0.4",
     "manifest_version": 2,
-    "description": "Hilfstool für BayIMCO CallCenter",
+    "description": "Hilfstool für BayIMCO CallCenter und CheckIn",
     "devtools_page": "devtools.html",
     "permissions": [
         "tabs",

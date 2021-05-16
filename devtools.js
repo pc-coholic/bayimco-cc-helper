@@ -1,1 +1,1 @@
-chrome.devtools.panels.create("BayIMCO CC Helper", null, "panel.html");
+chrome.devtools.panels.create("BayIMCO Helper", null, "panel.html");
