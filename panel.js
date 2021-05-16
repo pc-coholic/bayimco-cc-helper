@@ -45,6 +45,8 @@ function processPersonData(content) {
 function cleanup() {
     $('#nodata').show();
     $('#content').empty();
+    $('#agecalcResult').empty();
+    $('#agecalcBirthday').val('');
 }
 
 function getBooleanEmojiOrString(value) {
@@ -197,6 +199,15 @@ $(function() {
         } else {
             // ToDo: CORS issue...
             $.getJSON('https://impfzentren.bayern/api/v1/centers/byZip?zip=' + $(this).val(), function (data ) {});
+        }
+    });
+
+    $('#agecalcBirthday').keyup(function() {
+        let age = parseInt(Math.abs(new Date(Date.now() - new Date($(this).val()).getTime()).getUTCFullYear() - 1970));
+        if (isNaN(age)) {
+            $('#agecalcResult').empty();
+        } else {
+            $('#agecalcResult').html(age);
         }
     });
 });

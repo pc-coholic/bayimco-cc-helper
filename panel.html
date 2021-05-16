@@ -44,7 +44,7 @@
                 <!--
                 <div class="card">
                     <div class="card-header" id="izsearchHeader">
-                        <button class="btn" data-toggle="collapse" data-target="#izsearchBody" aria-expanded="false" aria-controls="sizsearchBody">Impfzentrum suchen</button>
+                        <button class="btn" data-toggle="collapse" data-target="#izsearchBody" aria-expanded="false" aria-controls="izsearchBody">Impfzentrum suchen</button>
                     </div>
                     <div id="izsearchBody" class="collapse" aria-labelledby="izsearchHeader" data-parent="#toolsAccordion">
                         <div class="card-body">
@@ -57,6 +57,20 @@
                     </div>
                 </div>
                 -->
+                <div class="card">
+                    <div class="card-header" id="agecalcHeader">
+                        <button class="btn" data-toggle="collapse" data-target="#agecalcBody" aria-expanded="false" aria-controls="agecalcBody">Alter berechnen</button>
+                    </div>
+                    <div id="agecalcBody" class="collapse" aria-labelledby="agecalcHeader" data-parent="#toolsAccordion">
+                        <div class="card-body">
+                            <form>
+                                <label for="agecalcBirthday" class="form-label">Geburtstag</label>
+                                <input type="date" class="form-control" id="agecalcBirthday">
+                                <div id="agecalcResult"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="clearfix">&nbsp;</div>
             <div id="content">&nbsp;</div>
