@@ -193,7 +193,7 @@ $(function() {
 
     $('#izsearchZIP').keyup(function() {
         if ($(this).val().length !== 5) {
-            $('izsearchResult').empty();
+            $('#izsearchResult').empty();
         } else {
             // ToDo: CORS issue...
             $.getJSON('https://impfzentren.bayern/api/v1/centers/byZip?zip=' + $(this).val(), function (data ) {});
