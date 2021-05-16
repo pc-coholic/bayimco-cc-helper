@@ -63,13 +63,26 @@ function makeMetadataCard(data) {
     out += '<div id="metadataBody" class="collapse show" aria-labelledby="metadataHeader" data-parent="#accordion">';
     out += '<div class="card-body"><table>';
 
-    let keys = ['birthday', 'age', 'score', 'registeredAt', 'deactivated', 'preexistingConditionsNumber', 'invited', 'invitationDate', 'contactedByCallCenter'];
+    let keys = ['priority', 'birthday', 'age', 'score', 'registeredAt', 'deactivated', 'preexistingConditionsNumber', 'invited', 'invitationDate', 'contactedByCallCenter'];
     let datetimekeys = ['registeredAt', 'invitationDate'];
     let datekeys = ['birthday'];
 
     keys.forEach(key => {
         if (key === "birthday") {
-            data['age'] = Math.abs(new Date(Date.now() - new Date(data[key]).getTime()).getUTCFullYear() - 1970)
+            let age = data['age'] = parseInt(
+                Math.abs(new Date(Date.now() - new Date(data[key]).getTime()).getUTCFullYear() - 1970)
+            );
+
+            if (age < 18) {
+                data['age'] += ' <span class="badge bg-danger">U18</span>';
+            }
+            if ('firstVaccinationVaccine' in data && data['firstVaccinationVaccine']['id'] === '002') {
+                if (age < 60) {
+                    data['age'] += ' <span class="badge bg-success">AZ -> mRNA: ✔️</span>';
+                } else {
+                    data['age'] += ' <span class="badge bg-warning">AZ -> mRNA: ❌️</span>';
+                }
+            }
         }
 
         if (datetimekeys.includes(key)) {
